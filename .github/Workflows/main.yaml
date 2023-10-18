@@ -1,0 +1,30 @@
+name: KM CICD Workflow
+on:
+- push:
+    branches:
+        - 'v[0-9]+.[0-9]'
+
+jobs:
+    CICD_Workflow:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: checkout my source
+          id: check_out_mysource
+          uses: actions/checkout@v4
+        
+        - name: scan code for vulnerabilities
+          id: scan_code_for_vulnerabilities
+          uses: aquasecurity/trivy-action@v0.46.0
+          with:
+            image-ref: .
+            format: table
+            severity: CRITICAL, HIGH
+        
+        -name: Send Github action to Slack
+         id: to_slack
+         uses: slackapi/slack-github-action@v1.24.0
+         env: 
+            SLACK_WEBHOOK_URL: ${{secerts.SLACK_WEBHOOK_TEST}}
+            SLACK_TEXT: ${{steps.scan_code_for_vulnerabilities.scan-result}}
+            SLACK_CHANNEL: test-submission
