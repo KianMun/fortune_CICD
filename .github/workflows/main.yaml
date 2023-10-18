@@ -1,8 +1,9 @@
 name: KM CICD Workflow
 on:
-    push:
-      branches:
-        - 'v[0-9]+.[0-9]'
+- push
+    #push:
+      #branches:
+        #- 'v[0-9]+.[0-9]'
 
 jobs:
     CICD_Workflow:
