@@ -21,10 +21,11 @@ jobs:
             format: table
             severity: CRITICAL, HIGH
         
-        -name: Send to Slack
-         id: to_slack
-         uses: slackapi/slack-github-action@v1.24.0
-         env:
-            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
-            SLACK_TEXT: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
-            SLACK_CHANNEL: test-submission
+        - name: Send to Slack
+          id: to_slack
+          uses: slackapi/slack-github-action@v1.24.0
+          with: 
+            slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_TEST }}
+            slack-body: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
+            slack-token: ${{ secrets.SLACK_TOKEN }}
+           
