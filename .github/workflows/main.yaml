@@ -18,7 +18,7 @@ jobs:
           id: scan_code_for_vulnerabilities
           uses: aquasecurity/trivy-action@master
           with:
-            image-ref: km-image:km-tag
+            image-ref: Dockerfile
             format: table
             severity: CRITICAL, HIGH
         
