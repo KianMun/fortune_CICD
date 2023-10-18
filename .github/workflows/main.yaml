@@ -16,7 +16,7 @@ jobs:
         
         - name: scan code for vulnerabilities
           id: scan_code_for_vulnerabilities
-          uses: aquasecurity/trivy-action@v0.46.0
+          uses: aquasecurity/trivy-action@vmaster
           with:
             image-ref: .
             format: table
