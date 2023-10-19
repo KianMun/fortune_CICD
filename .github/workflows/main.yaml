@@ -30,7 +30,7 @@ jobs:
             slack-message: "Testing the test of all tests"
           env: 
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
-            #slack-body: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
+            SLACK_BODY: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
             SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
             SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
            
