@@ -31,6 +31,6 @@ jobs:
           env: 
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
             #slack-body: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
-            #slack-token: ${{ secrets.SLACK_TOKEN }}
+            SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
             SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
            
