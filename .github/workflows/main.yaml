@@ -25,8 +25,8 @@ jobs:
         - name: Send to Slack
           id: to_slack
           uses: slackapi/slack-github-action@v1.24.0
-          with: 
-            slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_TEST }}
+          env: 
+            SLACK-WEBHOOK-URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
             slack-body: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
             slack-token: ${{ secrets.SLACK_TOKEN }}
            
