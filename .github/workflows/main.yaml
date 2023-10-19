@@ -25,6 +25,9 @@ jobs:
         - name: Send to Slack
           id: to_slack
           uses: slackapi/slack-github-action@v1.24.0
+          with:
+            channel-id: "test-submission"
+            slack-message: "Testing the test of all tests"
           env: 
             SLACK-WEBHOOK-URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
             slack-body: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
