@@ -49,11 +49,11 @@ jobs:
  
         - name: Upload Trivy Scan
           if: success()
-          uses: adrey/slack-file-upload-action@master
+          uses: MeilCli/slack-upload-file@v3
           with:
             path: trivyScan.txt
             channels: general
-            SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+            slack_token: ${{ secrets.SLACK_TOKEN }}
            
 
 #To define scope for to_slack
