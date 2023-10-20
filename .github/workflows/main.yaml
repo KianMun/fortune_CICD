@@ -20,6 +20,7 @@ jobs:
           id: scan_code_for_vulnerabilities
           uses: aquasecurity/trivy-action@master
           with:
+            scan-type: fs
             scan-ref: . #kianmun/fortunes:latest
             format: table
             severity: CRITICAL, HIGH
