@@ -64,7 +64,7 @@ jobs:
             SLACK_CHANNEL: general
             SLACK_COLOR: 'good'
             SLACK_TITLE: Image build and signed
-            SLACK_TITLE: 'Name: Chan Kian Mun' 
+            SLACK_MESSAGE: 'Name: Chan Kian Mun' 
             SLACK_TITLE: 'Matriculation: A0285670W'
             SLACK_TITLE: 'Email: e1221482@u.nus.edu'
             SLACK_TITLE: 'Git: https://github.com/KianMun/fortune_CICD'
