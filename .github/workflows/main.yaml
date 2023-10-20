@@ -1,6 +1,8 @@
 name: KM CICD Workflow
 on:
-- push
+  push:
+    branches:
+      - 'v[0-9]+.[0-9]'
     #push:
       #branches:
         #- 'v[0-9]+.[0-9]'
@@ -24,32 +26,16 @@ jobs:
             #outfile: scan_results.txt
             output: trivyScan.txt
         
-        - name: Send to Slack
-          id: to_slack
-          uses: slackapi/slack-github-action@v1.24.0
-          with:
-            #channel-id: "test-submission"
-            #slack-message: "Testing the test of all tests"
-            payload: |
-              {
-                
-                "blocks": [
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "Name: Chan Kian Mun"
-                    }
-                  }
-                ]
-              }
-            token: ${{ secrets.SLACK_TOKEN}}
-            path: trivScan.txt
-          env: 
-            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
-            #SLACK_BODY: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
-            #SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
-            SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        - name: Slack Notification
+          id: slack_notification
+          uses: rtCamp/action-slack-notify@v2
+          env:
+            SLACK_CHANNEL: general
+            SLACK_COLOR: ${{ job.status }} 
+            SLACK_MESSAGE: 'Post Content :rocket:'
+            SLACK_TITLE: Message
+            SLACK_USERNAME: KianMun
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
            
 
 #To define scope for to_slack
