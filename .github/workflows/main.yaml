@@ -21,6 +21,7 @@ jobs:
             image-ref: kianmun/fortunes:latest
             format: table
             severity: CRITICAL, HIGH
+            outfile: scan_results.txt
         
         - name: Send to Slack
           id: to_slack
@@ -37,18 +38,6 @@ jobs:
                     "text": {
                       "type": "mrkdwn",
                       "text": "Name: Chan Kian Mun"
-                    }
-                    {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "Email: idontknowwhattodo@idontknowwhattodo.com"
-                    }
-                    {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "Matriculation Number: 401 - 42"
                     }
                   }
                 ]
