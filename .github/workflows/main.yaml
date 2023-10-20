@@ -40,7 +40,7 @@ jobs:
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
-            SLACK_COLOR: red
+            SLACK_COLOR: '#FF0000'
             SLACK_MESSAGE: Failed trivy scan, see uploaded report
             SLACK_TITLE: Scan failed
             SLACK_USERNAME: KianMun
