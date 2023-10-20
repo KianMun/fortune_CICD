@@ -58,7 +58,7 @@ jobs:
         
         - name: Slack Notification Pass
           id: slack_notification_pass
-          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
+          if: failure()
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
