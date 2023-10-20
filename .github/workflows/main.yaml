@@ -64,11 +64,7 @@ jobs:
           SLACK_CHANNEL: general
           SLACK_COLOR: 'good'
           SLACK_TITLE: Image build and signed
-          SLACK_TITLE: Name
-          SLACK_MESSAGE: Kian Mun
-          SLACK_TITLE: Matriculation: Abc
-          SLACK_MESSAGE: Kian Mun
-          SLACK_USERNAME: KianMun
+          SLACK_FOOTER: Test: 123
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
 
