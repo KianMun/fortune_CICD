@@ -34,7 +34,6 @@ jobs:
             fi
           shell: bash
         
-        steps:    
         - name: Slack Notification Fail
           id: slack_notification_fail
           if: ${{ steps.trivy_scan_results.outputs.found_high_severity_vulnerabilities == 'true' }}
@@ -47,9 +46,9 @@ jobs:
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
-        steps:     
+ 
         - name: Upload Trivy Scan
-          needs: slack_notification_fail
+          if: success()
           uses: adrey/slack-file-upload-action@master
           with:
             path: trivyScan.txt
