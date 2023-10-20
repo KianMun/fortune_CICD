@@ -49,13 +49,10 @@ jobs:
  
         - name: Upload Trivy Scan
           if: success()
-          run: |
-            slack_token="${{ secrets.SLACK_TOKEN }}"
-            trivy_output=$(cat trivyScan.txt)
-            response=$(curl -F file=@trivyScan.txt -F channels=general -H "Authorization: Bearer $slack_token" https://slack.com/api/files.upload)
-            echo "$response"
-          env:
-            SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          uses: adrey/slack-file-upload-action@master
+          with:
+            token: ${{ secrets.SLACK_TOKEN }}
+            path: trivyScan.txt
            
 
 #To define scope for to_slack
