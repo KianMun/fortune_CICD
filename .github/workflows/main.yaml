@@ -52,7 +52,6 @@ jobs:
           uses: MeilCli/slack-upload-file@v3
           with:
             content: 'file content'
-            file_type: 'text'
             file_name: 'trivyScan.txt'
             title: 'trivyScan'
             slack_token: ${{ secrets.SLACK_TOKEN }}
