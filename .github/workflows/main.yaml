@@ -49,12 +49,13 @@ jobs:
  
         - name: Upload Trivy Scan
           if: success()
-          uses: MeilCli/slack-upload-file@v3
-          with:
-            content: ${{ steps.trivy_scan_results.outputs.trivy_output }}
-            file_name: 'trivyScan.txt'
-            title: 'trivyScan'
-            slack_token: ${{ secrets.SLACK_TOKEN }}
+          run: |
+            slack_token="${{ secrets.SLACK_TOKEN }}"
+            trivy_output=$(cat trivyScan.txt)
+            response=$(curl -F file=@trivyScan.txt -F channels=general -H "Authorization: Bearer $slack_token" https://slack.com/api/files.upload)
+            echo "$response"
+          env:
+            SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
            
 
 #To define scope for to_slack
