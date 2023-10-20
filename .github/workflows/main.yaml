@@ -53,6 +53,6 @@ jobs:
           with:
             token: ${{ secrets.SLACK_TOKEN }}
             path: trivyScan.tx
-           
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
 
 #To define scope for to_slack
