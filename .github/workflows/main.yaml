@@ -51,7 +51,7 @@ jobs:
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
         - name: Upload Trivy Scan
-          if: failure()
+          needs: slack_notification_fail
           uses: adrey/slack-file-upload-action@master
           with:
             path: trivyScan.txt
