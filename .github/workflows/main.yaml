@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - 'v[0-9]+.[0-9]'
-    #push:
-      #branches:
-        #- 'v[0-9]+.[0-9]'
 
 jobs:
     CICD_Workflow:
@@ -37,7 +34,7 @@ jobs:
             fi
           shell: bash
         
-       
+        steps:    
         - name: Slack Notification Fail
           id: slack_notification_fail
           if: ${{ steps.trivy_scan_results.outputs.found_high_severity_vulnerabilities == 'true' }}
@@ -45,11 +42,12 @@ jobs:
           env:
             SLACK_CHANNEL: general
             SLACK_COLOR: ${{ job.status }} 
-            SLACK_MESSAGE: ${{ steps.trivy_scan.outputs.trivy_scan.message }}
+            SLACK_MESSAGE: Scan Failed
             SLACK_TITLE: Scan Results
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
+        steps:     
         - name: Upload Trivy Scan
           needs: slack_notification_fail
           uses: adrey/slack-file-upload-action@master
