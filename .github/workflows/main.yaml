@@ -57,13 +57,15 @@ jobs:
             title: Scan report by Kian Mun
         
         - name: Slack Notification Pass
-        id: slack_notification_pass
-        if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: general
-          SLACK_COLOR: 'good'
-          SLACK_TITLE: Image build and signed
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
+          id: slack_notification_pass
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
+          uses: rtCamp/action-slack-notify@v2
+          env:
+            SLACK_CHANNEL: general
+            SLACK_COLOR: 'good'
+            SLACK_TITLE: Image build and signed
+            SLACK_FOOTER: 'TEST: test'
+            SLACK_USERNAME: KianMun
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
 
