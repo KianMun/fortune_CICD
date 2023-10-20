@@ -52,7 +52,7 @@ jobs:
           uses: adrey/slack-file-upload-action@master
           with:
             token: ${{ secrets.SLACK_TOKEN }}
-            path: trivyScan.txt
+            path: trivyScn.txt
            
 
 #To define scope for to_slack
