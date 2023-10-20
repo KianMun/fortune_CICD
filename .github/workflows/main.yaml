@@ -64,7 +64,7 @@ jobs:
           SLACK_CHANNEL: general
           SLACK_COLOR: 'good'
           SLACK_TITLE: Image build and signed
-          SLACK_FOOTER: Test: 123
+          SLACK_FOOTER: '123: Anc'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
 
