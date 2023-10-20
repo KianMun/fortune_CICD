@@ -28,15 +28,15 @@ jobs:
           run: |
             trivy_output=$(<trivyScan.txt)
             if echo "$trivy_output" | grep -q "HIGH"; then
-              echo "::set-output name=found_high_severity_vulnerabilities::true"
+              echo "::set-output name=scanFail::true"
             else
-              echo "::set-output name=found_high_severity_vulnerabilities::false"
+              echo "::set-output name=scanFail::false"
             fi
           shell: bash
         
         - name: Slack Notification Fail
           id: slack_notification_fail
-          if: ${{ steps.trivy_scan_results.outputs.found_high_severity_vulnerabilities == 'true' }}
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'true' }}
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
