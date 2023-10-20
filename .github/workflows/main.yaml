@@ -23,30 +23,40 @@ jobs:
             scan-type: fs
             scan-ref: . #kianmun/fortunes:latest
             format: table
-            severity: CRITICAL, HIGH
-            #outfile: scan_results.txt
+            severity: HIGH
             output: trivyScan.txt
         
-        - name: check trivy scan
-          id: check_trivy_scan
+        - name: trivy scan results
+          id: trivy_scan_results
           run: |
-            if [ -f "trivyScan.txt" ] && grep -q "Vulnerabilities detected: 0" "trivyScan.txt"; then
-              echo "Trivy Scan Successful"
+            trivy_output=$(<trivyScan.txt)
+            if echo "$trivy_output" | grep -q "HIGH"; then
+              echo "::set-output name=found_high_severity_vulnerabilities::true"
             else
-              echo "Trivy Scan Failed"
-              exit 1
+              echo "::set-output name=found_high_severity_vulnerabilities::false"
             fi
+          shell: bash
         
-        - name: Slack Notification
-          id: slack_notification
+       
+        - name: Slack Notification Fail
+          id: slack_notification_fail
+          if: ${{ steps.trivy_scan_results.outputs.found_high_severity_vulnerabilities == 'true' }}
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
             SLACK_COLOR: ${{ job.status }} 
-            SLACK_MESSAGE: ${{ steps.trivy_scan.outputs.check_trivy_scan.message }}
+            SLACK_MESSAGE: ${{ steps.trivy_scan.outputs.trivy_scan.message }}
             SLACK_TITLE: Scan Results
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
+        
+        - name: Upload Trivy Scan
+          if: failure()
+          uses: 8398a7/action-slack-upload-file@v2
+          with:
+            slack_file: trivyScan.txt
+            channels: general
+            SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
            
 
 #To define scope for to_slack
