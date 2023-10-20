@@ -40,9 +40,9 @@ jobs:
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
-            SLACK_COLOR: ${{ job.status }} 
-            SLACK_MESSAGE: Scan Failed, see uploaded report
-            SLACK_TITLE: Scan Results
+            SLACK_COLOR: red
+            SLACK_MESSAGE: Failed trivy scan, see uploaded report
+            SLACK_TITLE: Scan failed
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
