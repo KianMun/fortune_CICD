@@ -51,7 +51,7 @@ jobs:
           if: success()
           uses: MeilCli/slack-upload-file@v3
           with:
-            content: 'file content'
+            content: ${{ steps.trivy_scan_results.outputs.trivy_output }}
             file_name: 'trivyScan.txt'
             title: 'trivyScan'
             slack_token: ${{ secrets.SLACK_TOKEN }}
