@@ -34,17 +34,17 @@ jobs:
             fi
           shell: bash
         
-        #- name: Slack Notification Fail
-          #id: slack_notification_fail
-          #if: ${{ steps.trivy_scan_results.outputs.found_high_severity_vulnerabilities == 'true' }}
-          #uses: rtCamp/action-slack-notify@v2
-          #env:
-            #SLACK_CHANNEL: general
-            #SLACK_COLOR: ${{ job.status }} 
-            #SLACK_MESSAGE: Scan Failed, see uploaded report
-            #SLACK_TITLE: Scan Results
-            #SLACK_USERNAME: KianMun
-            #SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
+        - name: Slack Notification Fail
+          id: slack_notification_fail
+          if: ${{ steps.trivy_scan_results.outputs.found_high_severity_vulnerabilities == 'true' }}
+          uses: rtCamp/action-slack-notify@v2
+          env:
+            SLACK_CHANNEL: general
+            SLACK_COLOR: ${{ job.status }} 
+            SLACK_MESSAGE: Scan Failed, see uploaded report
+            SLACK_TITLE: Scan Results
+            SLACK_USERNAME: KianMun
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
  
         - name: Upload Trivy Scan
