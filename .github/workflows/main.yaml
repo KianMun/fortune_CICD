@@ -33,7 +33,7 @@ jobs:
           env:
             SLACK_CHANNEL: general
             SLACK_COLOR: ${{ job.status }} 
-            SLACK_MESSAGE: 'Scan Results:\n```'${{ steps.scan_code_for_vulnerabilities.outputs.trivyScan }}'```'
+            SLACK_MESSAGE: ${{ steps.scan_code_for_vulnerabilities.outputs.trivyScan }}
             SLACK_TITLE: Scan Results
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
