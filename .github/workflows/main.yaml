@@ -16,8 +16,8 @@ jobs:
           id: check_out_mysource
           uses: actions/checkout@v4
         
-        - name: scan code for vulnerabilities
-          id: scan_code_for_vulnerabilities
+        - name: trivy scan
+          id: trivy_scan
           uses: aquasecurity/trivy-action@master
           with:
             scan-type: fs
@@ -27,13 +27,23 @@ jobs:
             #outfile: scan_results.txt
             output: trivyScan.txt
         
+        - name: check trivy scan
+          id: check_trivy_scan
+          run: |
+            if [ -f "trivyScan.txt" ] && grep -q "Vulnerabilities detected: 0" "trivyScan.txt"; then
+              echo "Trivy Scan Successful"
+            else
+              echo "Trivy Scan Failed"
+              exit 1
+            fi
+        
         - name: Slack Notification
           id: slack_notification
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
             SLACK_COLOR: ${{ job.status }} 
-            SLACK_MESSAGE: ${{ steps.scan_code_for_vulnerabilities.outputs.trivyScan }}
+            SLACK_MESSAGE: ${{ steps.trivy_scan.outputs.check_trivy_scan.message }}
             SLACK_TITLE: Scan Results
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
