@@ -58,7 +58,7 @@ jobs:
         
         -
           name: Set up QEMU
-          if: failed()
+          if: failure()
           uses: docker/setup-qemu-action@v3
         -
           name: Set up Docker Buildx
