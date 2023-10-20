@@ -65,9 +65,9 @@ jobs:
             SLACK_COLOR: 'good'
             SLACK_TITLE: Image build and signed
             SLACK_MESSAGE: 'Name: Chan Kian Mun' 
-            SLACK_MESSAGE: 'Matriculation: A0285670W'
-            SLACK_MESSAGE: 'Email: e1221482@u.nus.edu'
-            SLACK_MESSAGE: 'Git: https://github.com/KianMun/fortune_CICD'
+            #SLACK_MESSAGE: 'Matriculation: A0285670W'
+            #SLACK_MESSAGE: 'Email: e1221482@u.nus.edu'
+            #SLACK_MESSAGE: 'Git: https://github.com/KianMun/fortune_CICD'
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
