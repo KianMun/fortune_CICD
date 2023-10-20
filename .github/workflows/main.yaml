@@ -64,7 +64,10 @@ jobs:
             SLACK_CHANNEL: general
             SLACK_COLOR: 'good'
             SLACK_TITLE: Image build and signed
-            SLACK_FOOTER: 'TEST: test'
+            SLACK_TITLE: 'Name: Chan Kian Mun' 
+            SLACK_TITLE: 'Matriculation: A0285670W'
+            SLACK_TITLE: 'Email: e1221482@u.nus.edu'
+            SLACK_TITLE: 'Git: https://github.com/KianMun/fortune_CICD'
             SLACK_USERNAME: KianMun
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
         
