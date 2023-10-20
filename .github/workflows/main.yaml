@@ -52,9 +52,9 @@ jobs:
         
         - name: Upload Trivy Scan
           if: failure()
-          uses: 8398a7/action-slack-upload-file@v2
+          uses: adrey/slack-file-upload-action@master
           with:
-            slack_file: trivyScan.txt
+            path: trivyScan.txt
             channels: general
             SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
            
