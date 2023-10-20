@@ -43,7 +43,8 @@ jobs:
                   }
                 ]
               }
-            payload-file-path: scan_results.txt
+            files: 
+            - ${{ github.workspace }}/trivyScan.txt
           env: 
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
             #SLACK_BODY: ${{ steps.scan_code_for_vulnerabilities.outputs.scan-result }}
