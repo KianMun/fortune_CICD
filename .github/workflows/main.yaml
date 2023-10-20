@@ -18,9 +18,9 @@ jobs:
           uses: aquasecurity/trivy-action@master
           with:
             scan-type: fs
-            scan-ref: . #kianmun/fortunes:latest
+            scan-ref: . 
             format: table
-            severity: HIGH
+            severity: CRITICAL
             output: trivyScan.txt
         
         - name: trivy scan results
@@ -55,5 +55,5 @@ jobs:
             path: trivyScan.txt
             channel: test-submission
             title: Scan report by Kian Mun
+        
 
-#To define scope for to_slack
