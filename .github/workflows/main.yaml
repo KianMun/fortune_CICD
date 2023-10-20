@@ -22,7 +22,7 @@ jobs:
             format: table
             severity: CRITICAL, HIGH
             #outfile: scan_results.txt
-            output:
+            output: trivyScan.txt
         
         - name: Send to Slack
           id: to_slack
