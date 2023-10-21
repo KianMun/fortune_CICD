@@ -56,39 +56,7 @@ jobs:
             push: true
             tags: kianmun/go-fortune:${{ github.sha }}
         
-        - name: Slack Pass meta
-          id: slack_pass_meta
-          uses: slackapi/slack-github-action@v1.24.0
-          env:
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
-          with:
-            attachments: |
-            [
-              {
-                "title":"Image Build And Signed"
-              },
-              {
-                "title":"Name"
-                "text":"Chan Kian Mun" 
-              },
-              {
-                "title":"Matriculation"
-                "text":"A0285670W" 
-              },
-              {
-                "title":"Email"
-                "text":"e1221482@u.nus.edu" 
-              },
-              {
-                "title":"Git"
-                "text":"https://github.com/KianMun/fortune_CICD" 
-              },
-              {
-                "title":"Image"
-                "text":"https://hub.docker.com/repository/docker/kianmun/go-fortune/general" 
-              }
-            ]
-        #SLACK_TITTLE: 'Name:'
+               #SLACK_TITTLE: 'Name:'
             #SLACK_MESSAGE: 'Chan Kian Mun'
             #SLACK_TITTLE: 'Matriculation:'
             #SLACK_MESSAGE: 'A0285670W'
