@@ -56,7 +56,9 @@ jobs:
             push: true
             tags: kianmun/go-fortune:${{ github.sha }}
         
-
+        #- name: sign_build
+          #if: success()
+          #uses:    
         - name: Slack Notification Pass
           id: slack_notification_pass
           if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
@@ -65,18 +67,14 @@ jobs:
             SLACK_TITLE: Image build and signed
             SLACK_MESSAGE: |
               *Name:* Chan Kian Mun
-              Matriculation: A0285670W
-              Email: e1221482@u.nus.edu
-              Git: https://github.com/KianMun/fortune_CICD
-              Image: https://hub.docker.com/repository/docker/kianmun/go-fortune/general
+              *Matriculation:* A0285670W
+              *Email:* e1221482@u.nus.edu
+              *Git:* https://github.com/KianMun/fortune_CICD
+              *Image:* https://hub.docker.com/repository/docker/kianmun/go-fortune/general
             SLACK_CHANNEL: general
             SLACK_COLOR: 'good'
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
 
-            
-              
-          
-  
 
         - name: Slack Notification Fail
           id: slack_notification_fail
