@@ -64,6 +64,7 @@ jobs:
             SLACK_CHANNEL: general
             SLACK_COLOR: 'good'
             SLACK_TITLE: Image build and signed
+            SLACK_MESSAGE: 'Success'
             SLACK_TITTLE: 'Name:'
             SLACK_MESSAGE: 'Chan Kian Mun'
             SLACK_TITTLE: 'Matriculation:'
