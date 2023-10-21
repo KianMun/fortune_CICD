@@ -56,6 +56,37 @@ jobs:
             push: true
             tags: kianmun/go-fortune:${{ github.sha }}
         
+        - name: Slack Pass meta
+          id: slack_pass_meta
+          uses: rtCamp/action-slack-notify@v2
+          env:
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
+          with:
+            attachments: |
+            {
+              "title":"Image Build And Signed"
+            },
+            {
+              "title":"Name"
+              "text":"Chan Kian Mun" 
+            },
+            {
+              "title":"Matriculation"
+              "text":"A0285670W" 
+            },
+            {
+              "title":"Email"
+              "text":"e1221482@u.nus.edu" 
+            },
+            {
+              "title":"Git"
+              "text":"https://github.com/KianMun/fortune_CICD" 
+            },
+            {
+              "title":"Image"
+              "text":"https://hub.docker.com/repository/docker/kianmun/go-fortune/general" 
+            }
+        
         - name: Slack Notification Pass
           id: slack_notification_pass
           if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
@@ -75,33 +106,8 @@ jobs:
             #SLACK_MESSAGE: 'https://hub.docker.com/repository/docker/kianmun/go-fortune/general'
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
           with:
-            SLACK_MESSAGE: |
-              [
-                {
-                  "title":"Image Build And Signed"
-                },
-                {
-                  "title":"Name"
-                  "text":"Chan Kian Mun" 
-                },
-                {
-                  "title":"Matriculation"
-                  "text":"A0285670W" 
-                },
-                {
-                  "title":"Email"
-                  "text":"e1221482@u.nus.edu" 
-                },
-                {
-                  "title":"Git"
-                  "text":"https://github.com/KianMun/fortune_CICD" 
-                },
-                {
-                  "title":"Image"
-                  "text":"https://hub.docker.com/repository/docker/kianmun/go-fortune/general" 
-                }
-              ]
-      
+            attachments: ${{ tojson(attachments) }}
+       
         - name: Slack Notification Fail
           id: slack_notification_fail
           if: ${{ steps.trivy_scan_results.outputs.scanFail == 'true' }}
