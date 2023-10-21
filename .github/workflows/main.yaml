@@ -77,13 +77,17 @@ jobs:
             SLACK_TITLE: Image Build and signed
             SLACK_MESSAGE: |
             {
-              "title":"Name"
-              "text":"Chan Kian Mun" 
-            },
-            {
-              "title":"Matriculation"
-              "text":"A0285670W" 
-            } 
+              "type": "section",
+              "fields": [
+                {
+                  "type": "mrkdwn",
+                  "text": "*Name:*\nChan Kian Mun"
+                }  
+              ]
+            }
+              
+          
+  
 
         - name: Slack Notification Fail
           id: slack_notification_fail
