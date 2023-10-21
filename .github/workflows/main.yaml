@@ -20,7 +20,7 @@ jobs:
             scan-type: fs
             scan-ref: . 
             format: table
-            severity: CRITICAL
+            severity: HIGH, CRITICAL
             output: trivyScan.txt
         
         - name: trivy scan results
