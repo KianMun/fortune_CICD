@@ -71,7 +71,7 @@ jobs:
           if: success()
           env:
             COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-          run: cosign sign --key cosign.key ${{ env.REGISTRY }}/kianmun/go-fortune:${{ github.sha }}             
+          run: cosign sign --key cosign.key ${{ env.REGISTRY }}kianmun/go-fortune:${{ github.sha }}             
 
         - name: Slack Notification Pass
           id: slack_notification_pass
