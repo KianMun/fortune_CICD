@@ -121,6 +121,3 @@ jobs:
             path: trivyScan.txt
             channel: test-submission
             title: Scan report by Kian Mun
-        
-
-#
