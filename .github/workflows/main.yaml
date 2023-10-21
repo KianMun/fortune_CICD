@@ -74,12 +74,10 @@ jobs:
             payload: |
             {
               "type": "section",
-              "fields": [
                 {
                   "type": "mrkdwn",
                   "text": "*Name:*\nChan Kian Mun"
                 }  
-              ]
             }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
