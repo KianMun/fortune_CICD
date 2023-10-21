@@ -54,7 +54,7 @@ jobs:
           uses: docker/build-push-action@v5
           with:
             push: true
-            tags: user/app:${{ github.sha }}
+            tags: kianmun/go-fortune:${{ github.sha }}
         
         - name: Slack Notification Pass
           id: slack_notification_pass
