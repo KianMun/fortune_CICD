@@ -66,7 +66,7 @@ jobs:
             tags: kianmun/go-fortune:${{ github.sha }}
         
         - name: cosign-install
-          if: success()
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
           uses: sigstore/cosign-installer@v3.1.1
         
         - name: get_key
@@ -76,7 +76,7 @@ jobs:
             KEY: ${{ secrets.COSIGN_PRIV }}
         
         - name: sign docker image
-          if: success()
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
           run: cosign sign --yes --key env://COSIGN_PRIVATE_KEY "kianmun/go-fortune:${{ github.sha }}"
           env:
             COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIV}}
