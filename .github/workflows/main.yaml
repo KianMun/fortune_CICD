@@ -73,14 +73,48 @@ jobs:
           with:
             payload: |
               {
-                "text": "*Image Build and signed*",
                 "blocks": [
                   {
-                    "type": "section",
+                    "type": "header",
                     "text": {
-                      "type": "mrkdwn",
-                      "text": "Name:\nChan Kian Mun"
+                      "type": "plain_text",
+                      "text": "New request"
                     }
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Ref:*\n${{ github.ref }}"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Event:*\n{{ github.event_name }}"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Actions URL:*\n<https://github.com/KianMun/fortune_CICD|KM CICD>"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Commit:*\n${{ github.sha }}"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Image build and signed*\n*Name:* Chan Kian Mun\n*Matriculation:* A0285670W\n*Email:* e1221482@u.nus.edu\n*Git:* https://github.com/KianMun/fortune_CICD\n*Image:* https://hub.docker.com/repository/docker/kianmun/go-fortune/general"
+                      }
+                    ]
                   }
                 ]
               }
