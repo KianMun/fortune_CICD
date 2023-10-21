@@ -97,7 +97,7 @@ jobs:
               *Image:* https://hub.docker.com/repository/docker/kianmun/go-fortune/general
             SLACK_CHANNEL: general
             SLACK_COLOR: 'good'
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_SUBMISSION }}
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
 
 
         - name: Slack Notification Fail
@@ -110,7 +110,7 @@ jobs:
             SLACK_MESSAGE: Failed trivy scan, see uploaded report
             SLACK_TITLE: Scan failed
             SLACK_USERNAME: KianMun
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_SUBMISSION }}
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
       
         - name: Upload Trivy Scan
           id: upload_trivy_scan
