@@ -72,13 +72,13 @@ jobs:
           uses: slackapi/slack-github-action@v1.24.0
           with:
             payload: |
-            {
-              "type": "section",
-                {
-                  "type": "mrkdwn",
-                  "text": "*Name:*\nChan Kian Mun"
-                }  
-            }
+              {
+                "type": "section",
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Name:*\nChan Kian Mun"
+                  }  
+              }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TEST }}
           #env:
