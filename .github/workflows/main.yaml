@@ -39,18 +39,18 @@ jobs:
           uses: docker/setup-qemu-action@v3
         -
           name: Set up Docker Buildx
-          if: success()
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
           uses: docker/setup-buildx-action@v3
         -
           name: Login to Docker Hub
-          if: success()
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
           uses: docker/login-action@v3
           with:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PW }}
         -
           name: Build and push
-          if: success()
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
           uses: docker/build-push-action@v5
           with:
             push: true
@@ -58,7 +58,7 @@ jobs:
         
         - name: Slack Notification Pass
           id: slack_notification_pass
-          if: success()
+          if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
