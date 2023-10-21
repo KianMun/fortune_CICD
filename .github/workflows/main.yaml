@@ -63,29 +63,31 @@ jobs:
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
           with:
             attachments: |
-            {
-              "title":"Image Build And Signed"
-            },
-            {
-              "title":"Name"
-              "text":"Chan Kian Mun" 
-            },
-            {
-              "title":"Matriculation"
-              "text":"A0285670W" 
-            },
-            {
-              "title":"Email"
-              "text":"e1221482@u.nus.edu" 
-            },
-            {
-              "title":"Git"
-              "text":"https://github.com/KianMun/fortune_CICD" 
-            },
-            {
-              "title":"Image"
-              "text":"https://hub.docker.com/repository/docker/kianmun/go-fortune/general" 
-            }
+            [
+              {
+                "title":"Image Build And Signed"
+              },
+              {
+                "title":"Name"
+                "text":"Chan Kian Mun" 
+              },
+              {
+                "title":"Matriculation"
+                "text":"A0285670W" 
+              },
+              {
+                "title":"Email"
+                "text":"e1221482@u.nus.edu" 
+              },
+              {
+                "title":"Git"
+                "text":"https://github.com/KianMun/fortune_CICD" 
+              },
+              {
+                "title":"Image"
+                "text":"https://hub.docker.com/repository/docker/kianmun/go-fortune/general" 
+              }
+            ]
         
         - name: Slack Notification Pass
           id: slack_notification_pass
