@@ -69,8 +69,8 @@ jobs:
         
         - name: sign docker image
           if: success()
-          #env:
-            #COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          env:
+            COSIGN_PASSWORD: ''
           run: cosign sign --key cosign.key ${{ env.REGISTRY }}kianmun/go-fortune:${{ github.sha }}             
 
         - name: Slack Notification Pass
