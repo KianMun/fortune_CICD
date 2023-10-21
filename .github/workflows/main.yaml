@@ -69,9 +69,11 @@ jobs:
         
         - name: sign docker image
           if: success()
+          run: cosign sign --yes --key env://COSIGN_PRIVATE_KEY "kianmun/go-fortune:${{ github,sha }}"
           env:
-            COSIGN_PASSWORD: ''
-          run: cosign sign --key cosign.key ${{ env.REGISTRY }}kianmun/go-fortune:${{ github.sha }}             
+            COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIV}}
+            COSIGN_PASSWORD:
+          #run: cosign sign --key cosign.key ${{ env.REGISTRY }}kianmun/go-fortune:${{ github.sha }}             
 
         - name: Slack Notification Pass
           id: slack_notification_pass
