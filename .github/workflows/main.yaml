@@ -75,7 +75,7 @@ jobs:
             #SLACK_MESSAGE: 'https://hub.docker.com/repository/docker/kianmun/go-fortune/general'
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
           with:
-            attachments: |
+            Message: |
               [
                 {
                   "title":"Image Build And Signed"
