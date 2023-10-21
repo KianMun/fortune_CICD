@@ -62,53 +62,7 @@ jobs:
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: general
-            SLACK_COLOR: 'good'
-            SLACK_TITLE: Image build and signed
-            SLACK_MESSAGE: '{
-                              "blocks": [                                
-                                {
-                                  "type": "section",
-                                  "fields": [
-                                    {
-                                      "type": "mrkdwn",
-                                      "text": "*Name:*\nChan Kian Mun"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "section",
-                                  "fields": [
-                                    {
-                                      "type": "mrkdwn",
-                                      "text": "*Matriculation:*\nA0285670W"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "section",
-                                  "fields": [
-                                    {
-                                      "type": "mrkdwn",
-                                      "text": "*Email:*\ne1221482@u.nus.edu"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "section",
-                                  "text": {
-                                    "type": "mrkdwn",
-                                    "text": "*Git:*\nhttps://github.com/KianMun/fortune_CICD"
-                                  }
-                                }
-                                {
-                                  "type": "section",
-                                  "text": {
-                                    "type": "mrkdwn",
-                                    "text": "*Image:*\nhttps://hub.docker.com/repository/docker/kianmun/go-fortune/general"
-                                  }
-                                }
-                              ]            
-                            }'
+            SLACK_COLOR: 'good'            
             #SLACK_TITTLE: 'Name:'
             #SLACK_MESSAGE: 'Chan Kian Mun'
             #SLACK_TITTLE: 'Matriculation:'
@@ -120,6 +74,33 @@ jobs:
             #SLACK_TITTLE: 'Image:'
             #SLACK_MESSAGE: 'https://hub.docker.com/repository/docker/kianmun/go-fortune/general'
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
+          with:
+            attachments: |
+              [
+                {
+                  "title":"Image Build And Signed"
+                },
+                {
+                  "title":"Name"
+                  "text":"Chan Kian Mun" 
+                },
+                {
+                  "title":"Matriculation"
+                  "text":"A0285670W" 
+                },
+                {
+                  "title":"Email"
+                  "text":"e1221482@u.nus.edu" 
+                },
+                {
+                  "title":"Git"
+                  "text":"https://github.com/KianMun/fortune_CICD" 
+                },
+                {
+                  "title":"Image"
+                  "text":"https://hub.docker.com/repository/docker/kianmun/go-fortune/general" 
+                }
+              ]
       
         - name: Slack Notification Fail
           id: slack_notification_fail
