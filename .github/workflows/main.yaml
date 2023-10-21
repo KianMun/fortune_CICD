@@ -58,7 +58,7 @@ jobs:
         
         - name: Slack Pass meta
           id: slack_pass_meta
-          uses: rtCamp/action-slack-notify@v2
+          uses: slackapi/slack-github-action@v1.24.0
           env:
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
           with:
