@@ -56,16 +56,7 @@ jobs:
             push: true
             tags: kianmun/go-fortune:${{ github.sha }}
         
-               #SLACK_TITTLE: 'Name:'
-            #SLACK_MESSAGE: 'Chan Kian Mun'
-            #SLACK_TITTLE: 'Matriculation:'
-            #SLACK_MESSAGE: 'A0285670W'
-            #SLACK_TITTLE: 'Email:'
-            #SLACK_MESSAGE: 'e1221482@u.nus.edu'
-            #SLACK_TITTLE: 'Git:'
-            #SLACK_MESSAGE: 'https://github.com/KianMun/fortune_CICD'
-            #SLACK_TITTLE: 'Image:'
-            #SLACK_MESSAGE: 'https://hub.docker.com/repository/docker/kianmun/go-fortune/general'
+
         - name: Slack Notification Pass
           id: slack_notification_pass
           if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
@@ -73,7 +64,7 @@ jobs:
           env:
             SLACK_TITLE: Image build and signed
             SLACK_MESSAGE: |
-              Name: Chan Kian Mun
+              *Name:* Chan Kian Mun
               Matriculation: A0285670W
               Email: e1221482@u.nus.edu
               Git: https://github.com/KianMun/fortune_CICD
