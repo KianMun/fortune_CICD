@@ -72,6 +72,8 @@ jobs:
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_MESSAGE: |
+              *Name: *Chan Kian Mun
+              
               {
                 "blocks": [
                   {
