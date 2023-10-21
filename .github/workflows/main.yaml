@@ -71,55 +71,13 @@ jobs:
           if: ${{ steps.trivy_scan_results.outputs.scanFail == 'false' }}
           uses: rtCamp/action-slack-notify@v2
           env:
+            SLACK_TITLE: Image build and signed
             SLACK_MESSAGE: |
-              *Name: *Chan Kian Mun
-              
-              {
-                "blocks": [
-                  {
-                    "type": "header",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "${{ github.repository_owner }}"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "fields": [
-                      {
-                        "type": "mrkdwn",
-                        "text": "*Ref:*\n${{ github.ref }}"
-                      },
-                      {
-                        "type": "mrkdwn",
-                        "text": "*Event:*\n${{ github.event_name }}"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "section",
-                    "fields": [
-                      {
-                        "type": "mrkdwn",
-                        "text": "*Actions URL:*\n<https://github.com/KianMun/fortune_CICD|KM CICD>"
-                      },
-                      {
-                        "type": "mrkdwn",
-                        "text": "*Commit:*\n${{ github.sha }}"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "section",
-                    "fields": [
-                      {
-                        "type": "mrkdwn",
-                        "text": "*Image build and signed*\n*Name:* Chan Kian Mun\n*Matriculation:* A0285670W\n*Email:* e1221482@u.nus.edu\n*Git:* https://github.com/KianMun/fortune_CICD\n*Image:* https://hub.docker.com/repository/docker/kianmun/go-fortune/general"
-                      }
-                    ]
-                  }
-                ]
-              }
+              Name: Chan Kian Mun
+              Matriculation: A0285670W
+              Email: e1221482@u.nus.edu
+              Git: https://github.com/KianMun/fortune_CICD
+              Image: https://hub.docker.com/repository/docker/kianmun/go-fortune/general
             SLACK_CHANNEL: general
             SLACK_COLOR: 'good'
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
